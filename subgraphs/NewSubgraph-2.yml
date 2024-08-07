@@ -1,0 +1,7 @@
+fileVersion: 1
+id: "2"
+name: New Subgraph
+steps:
+  - 360e3791-9dda-4b79-8c56-719234c25881
+type: Subgraph
+version: 1
