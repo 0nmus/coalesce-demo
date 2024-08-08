@@ -1,0 +1,128 @@
+fileVersion: 1
+id: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+name: FCT_ORDERS
+operation:
+  config:
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+  database: ""
+  deployEnabled: true
+  description: Orders data as defined by TPC-H
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6fba793-3899-47f9-bace-2a4c019c01bc
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        isBusinessKey: true
+        name: O_ORDERKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ba03b02b-63aa-4b05-ab1d-a4d30c62ad6c
+                stepCounter: 74883464-d5c3-4594-9504-7d5c0f5ed86c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2a8daf6-2b4e-4e8e-bb42-d734a2144c6d
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: O_CUSTKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 230acaf8-1909-411b-86a9-87072563a35f
+                stepCounter: 74883464-d5c3-4594-9504-7d5c0f5ed86c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bbd584c5-dad4-48a8-bd66-13d0f8abfc2f
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: O_TOTALPRICE
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c492b9f-a788-498a-96d3-4c78b3fc6b25
+                stepCounter: 74883464-d5c3-4594-9504-7d5c0f5ed86c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e03e8ed1-c7bf-436b-800b-f12336d92bb7
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: DIM_CUSTOMER_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d6d78052-bd74-4f5c-adf0-2c9de14f5c56
+                stepCounter: 74883464-d5c3-4594-9504-7d5c0f5ed86c
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: de297396-754d-4cc0-938e-104dab89871e
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a47a1326-8330-46ca-8258-43f322287a07
+          stepCounter: 672f2f3f-7e16-4549-9fb1-65a316c0123d
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: STG_ORDERS
+        join:
+          joinCondition: FROM {{ ref('WORK', 'STG_ORDERS') }} "STG_ORDERS"
+        name: FCT_ORDERS
+        noLinkRefs: []
+  name: FCT_ORDERS
+  overrideSQL: false
+  schema: ""
+  sqlType: Fact
+  type: sql
+  version: 1
+type: Node
