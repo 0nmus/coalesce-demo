@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "3"
+mappingDefinitions:
+  JSON:
+    database: ""
+    schema: ""
+  XML:
+    database: ""
+    schema: ""
+name: Production
+type: Environment

@@ -1,0 +1,209 @@
+fileVersion: 1
+id: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+name: STG_MUSIC
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6eace2b-2876-468e-ae4a-dae4c3d252f3
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d0494e9-c7d9-4604-9eb0-99d799af4e41
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(MUSIC.SRC, '@date')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0e7bdfe0-5ce5-4d1f-b2a3-8fac2950e0be
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_issue
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(MUSIC.SRC, '@issue')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c102e1da-6b6e-48df-bf4b-a5686d7db920
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(catalog_cd.value, '@id')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b5b0106-77fc-47d2-a912-19d577d7978d
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'title'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 25fb6cb7-8173-4442-a6f9-02449f68683a
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_genre
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'genre'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff22387f-a2ae-45c0-9f33-47ab1c3f0770
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_artist
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'artist'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0dc5da2-01db-4320-9bc0-be6b1093949a
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_publish_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'publish_date'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d20c5e8-6830-4921-bb67-accc896bfbcd
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_price
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'price'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d923c05-d321-4aae-b9fa-3e811ac2ed40
+          stepCounter: eb8499fe-3ea6-49a8-ad37-aed12b25320f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_cd_description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 804e8156-5fe3-4649-8f26-180f8de13532
+                stepCounter: 9a105d81-585c-4bba-92ec-7aca57cf0d3b
+            transform: get(xmlget(catalog_cd.value, 'description'), '$')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: XML
+            nodeName: MUSIC
+        join:
+          joinCondition: |-
+            FROM {{ ref('XML', 'MUSIC') }} "MUSIC", 
+            LATERAL FLATTEN(input => get(MUSIC.SRC, '$')) catalog_cd
+            where get(catalog_cd.value, '@') = 'cd'
+        name: STG_MUSIC
+        noLinkRefs: []
+  name: STG_MUSIC
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
