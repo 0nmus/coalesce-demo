@@ -1,0 +1,80 @@
+fileVersion: 1
+id: 561b036a-5f08-44cb-9858-5ab004de7d35
+name: DT_WRK_ORDERS_LINEITEM_CUSTOMER_NATION_REGION
+operation:
+  config:
+    downstreamOption: false
+    groupByAll: true
+    initialize: ON_CREATE
+    insertStrategy: UNION ALL
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: "5"
+    refresh_mode: AUTO
+    selectDistinct: false
+    warehouseName: dev_wh_xs
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: Dynamic Table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad2bc720-b8ac-4ee4-9efc-347c3cbac228
+          stepCounter: 561b036a-5f08-44cb-9858-5ab004de7d35
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: C_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3fb41985-7514-4062-8b3d-3ebf7123bce1
+                stepCounter: b9e5c39f-431c-4d05-99c6-ccf0cae11e92
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ece1c824-18bd-4ccd-bce0-07a4d7ece4a5
+          stepCounter: 561b036a-5f08-44cb-9858-5ab004de7d35
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: L_QUANTITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff839d32-0efe-4153-a8f7-a9a32b5b8bf9
+                stepCounter: 32e0f8fd-5164-444f-bae8-903983df1178
+            transform: sum("DT_WRK_ORDERS_LINEITEM"."L_QUANTITY")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DT_WRK_CUSTOMER_NATION_REGION: b9e5c39f-431c-4d05-99c6-ccf0cae11e92
+          DT_WRK_ORDERS_LINEITEM: 32e0f8fd-5164-444f-bae8-903983df1178
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: DT_WRK_CUSTOMER_NATION_REGION
+          - locationName: WORK
+            nodeName: DT_WRK_ORDERS_LINEITEM
+        join:
+          joinCondition: |-
+            FROM {{ ref('WORK', 'DT_WRK_ORDERS_LINEITEM') }} "DT_WRK_ORDERS_LINEITEM"
+            INNER JOIN {{ ref('WORK', 'DT_WRK_CUSTOMER_NATION_REGION') }} "DT_WRK_CUSTOMER_NATION_REGION"
+            ON "DT_WRK_ORDERS_LINEITEM"."O_CUSTKEY" = "DT_WRK_CUSTOMER_NATION_REGION"."C_CUSTKEY"
+        name: DT_WRK_ORDERS_LINEITEM_CUSTOMER_NATION_REGION
+        noLinkRefs: []
+  name: DT_WRK_ORDERS_LINEITEM_CUSTOMER_NATION_REGION
+  overrideSQL: false
+  schema: ""
+  sqlType: "4"
+  type: sql
+  version: 1
+type: Node
